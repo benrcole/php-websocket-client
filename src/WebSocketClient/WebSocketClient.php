@@ -23,52 +23,52 @@ class WebSocketClient
     /**
      * @var string
      */
-    private $key;
+    protected $key;
 
     /**
      * @var StreamSelectLoop
      */
-    private $loop;
+    protected $loop;
 
     /**
      * @var WebSocketClientInterface
      */
-    private $client;
+    protected $client;
 
     /**
      * @var string
      */
-    private $host;
+    protected $host;
 
     /**
      * @var int
      */
-    private $port;
+    protected $port;
 
     /**
      * @var string
      */
-    private $origin;
+    protected $origin;
 
     /**
      * @var string
      */
-    private $path;
+    protected $path;
 
     /**
      * @var Connection
      */
-    private $socket;
+    protected $socket;
 
     /**
      * @var bool
      */
-    private $connected = false;
+    protected $connected = false;
 
     /**
      * @var array
      */
-    private $callbacks = array();
+    protected $callbacks = array();
 
     /**
      * @param WebSocketClientInterface $client
@@ -78,7 +78,7 @@ class WebSocketClient
      * @param string $path
      * @param null|string $origin
      */
-    function __construct(WebSocketClientInterface $client, StreamSelectLoop $loop, $host = '127.0.0.1', $port = 8080, $path = '/', $origin = null)
+    protected function __construct(WebSocketClientInterface $client, StreamSelectLoop $loop, $host = '127.0.0.1', $port = 8080, $path = '/', $origin = null)
     {
         $this->setLoop($loop);
         $this->setHost($host);
@@ -95,7 +95,7 @@ class WebSocketClient
     /**
      * Disconnect on destruct
      */
-    function __destruct()
+    protected function __destruct()
     {
         $this->disconnect();
     }
